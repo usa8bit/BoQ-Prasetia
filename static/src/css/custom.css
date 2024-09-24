@@ -1,0 +1,16 @@
+<template id="assets_backend" inherit_id="web.assets_backend" name="Custom Scrollable Tree View">
+  <xpath expr="." position="inside">
+    <style>
+      .o_list_view {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .o_list_view th, .o_list_view td {
+        min-width: 150px; !important;
+      }
+      th {
+        white-space: nowrap;
+      }
+    </style>
+  </xpath>
+</template>

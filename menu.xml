@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <menuitem
+                id="menu_bill_of_quantity_root"
+                name="Bill of Quantity Prasetia"
+                sequence="10"
+        />
+    </data>
+</odoo>

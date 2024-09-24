@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="bill_of_quantity_module_category" model="ir.module.category">
+        <field name="name">Bill of Quantity</field>
+    </record>
+
+    <record id="bill_of_quantity_workflow_module_category" model="ir.module.category">
+        <field name="name">Bill of Quantity - Workflow</field>
+        <field name="parent_id" ref="bill_of_quantity_module_category" />
+    </record>
+
+    <record id="bill_of_quantity_data_module_category" model="ir.module.category">
+        <field name="name">Bill of Quantity - Data</field>
+        <field name="parent_id" ref="bill_of_quantity_module_category" />
+    </record>
+</odoo>

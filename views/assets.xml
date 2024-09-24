@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend" name="Custom Scrollable Tree View JS">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/bill_of_quantity_prasetia/static/src/js/custom.js"></script>
+        </xpath>
+    </template>
+</odoo>

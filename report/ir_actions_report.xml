@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_report_boq_pdf" model="ir.actions.report">
+        <field name="name">Bill of Quantity Report</field>
+        <field name="model">bill.of.quantity</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bill_of_quantity_prasetia.report_boq_pdf</field>
+        <field name="report_file">bill_of_quantity_prasetia.report_boq_pdf</field>
+        <field name="print_report_name">'Report - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_bill_of_quantity"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_report_boq_pdf"/>
+    </record>
+</odoo>

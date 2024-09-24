@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_prasetia_tree" model="ir.ui.view">
+        <field name="name">project.prasetia.tree</field>
+        <field name="model">project.prasetia</field>
+        <field name="arch" type="xml">
+            <tree string="Project Prasetia">
+                <field name="name" string="Project ID"/>
+                <field name="site_name"/>
+                <field name="partner_id"/>
+                <field name="area"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_prasetia_form" model="ir.ui.view">
+        <field name="name">project.prasetia.form</field>
+        <field name="model">project.prasetia</field>
+        <field name="arch" type="xml">
+            <form string="Project Prasetia">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="site_name"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="area"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_project_prasetia" model="ir.actions.act_window">
+        <field name="name">Projects Prasetia</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.prasetia</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_project_prasetia"
+              name="Projects"
+              parent="menu_bill_of_quantity_root"
+              sequence="20"/>
+    <menuitem id="menu_project_id"
+              name="Projects ID"
+              parent="menu_project_prasetia"
+              action="action_project_prasetia"
+              sequence="10"/>
+</odoo>

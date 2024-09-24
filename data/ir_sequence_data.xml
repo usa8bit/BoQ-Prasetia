@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_bill_of_quantity" model="ir.sequence">
+            <field name="name">Bill of Quantity Sequence</field>
+            <field name="code">bill.of.quantity</field>
+            <field name="suffix">/BOQ/PD/%(y)s</field>
+            <field eval="4" name="padding"/>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+    </data>
+</odoo>
