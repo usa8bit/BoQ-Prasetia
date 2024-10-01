@@ -27,8 +27,8 @@
     ],
     "assets": {
         'web.assets_backend': [
-            'bill_of_quantity_prasetia/static/src/css/custom.css',
-            'bill_of_quantity_prasetia/static/src/js/custom.js',
+            # 'bill_of_quantity_prasetia/static/src/css/custom.css',
+            # 'bill_of_quantity_prasetia/static/src/js/custom.js',
         ],
     }
 }

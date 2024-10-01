@@ -4,13 +4,21 @@
         <field name="name">Bill of Quantity</field>
     </record>
 
+    <!-- Workflow -->
     <record id="bill_of_quantity_workflow_module_category" model="ir.module.category">
         <field name="name">Bill of Quantity - Workflow</field>
         <field name="parent_id" ref="bill_of_quantity_module_category" />
     </record>
 
+    <!-- Data -->
     <record id="bill_of_quantity_data_module_category" model="ir.module.category">
         <field name="name">Bill of Quantity - Data</field>
+        <field name="parent_id" ref="bill_of_quantity_module_category" />
+    </record>
+
+    <!-- Role -->
+    <record id="bill_of_quantity_role_module_category" model="ir.module.category">
+        <field name="name">Bill of Quantity - Role</field>
         <field name="parent_id" ref="bill_of_quantity_module_category" />
     </record>
 </odoo>

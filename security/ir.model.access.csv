@@ -1,7 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-bill_of_quantity,access_bill_of_quantity,model_bill_of_quantity,,1,1,1,1
-bill_of_quantity_s_line,access_bill_of_quantity_s_line,model_bill_of_quantity_s_line,,1,1,1,1
-bill_of_quantity_ns_line,access_bill_of_quantity_ns_line,model_bill_of_quantity_ns_line,,1,1,1,1
-project_prasetia,access_project_prasetia,model_project_prasetia,,1,1,1,1
-project_template,access_project_template,model_project_template,,1,1,1,1
-project_template_line,access_project_template_line,model_project_template_line,,1,1,1,1
+bill_of_quantity,access_bill_of_quantity,model_bill_of_quantity,group_view_all_data,1,1,1,1
+bill_of_quantity_vendor,access_bill_of_quantity - vendor,model_bill_of_quantity,group_view_own_data,1,1,0,0
+bill_of_quantity_s_line,access_bill_of_quantity_s_line,model_bill_of_quantity_s_line,group_view_all_data,1,1,1,1
+bill_of_quantity_s_line_vendor,access_bill_of_quantity_s_line - vendor,model_bill_of_quantity_s_line,group_view_own_data,1,1,0,0
+bill_of_quantity_ns_line,access_bill_of_quantity_ns_line,model_bill_of_quantity_ns_line,group_view_all_data,1,1,1,1
+bill_of_quantity_ns_line_vendor,access_bill_of_quantity_ns_line - vendor,model_bill_of_quantity_ns_line,group_view_own_data,1,1,1,1
+project_prasetia,access_project_prasetia,model_project_prasetia,group_view_all_data,1,1,1,1
+project_template,access_project_template,model_project_template,group_view_all_data,1,1,1,1
+project_template_line,access_project_template_line,model_project_template_line,group_view_all_data,1,1,1,1

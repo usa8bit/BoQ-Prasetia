@@ -2,78 +2,75 @@
     <template id="report_boq_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
+                <style>
+                    .tg {border-collapse:collapse;border-spacing:0;}
+                    .tg td {border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                    sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                    .table {border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                    sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;
+                    text-align:center;vertical-align:center;}
+                </style>
                 <t t-call="web.basic_layout">
                     <div class="page">
-                        <div class="header">
+                        <table class="header">
                             <tr>
-                                <td>
-                                    <strong>Vendor Name:
-                                        <t t-esc="o.partner_id.name"/>
-                                    </strong>
-                                </td>
-                                <td>
-                                    <strong>No SPK:
-                                        <t t-esc="o.spk_id"/>
-                                    </strong>
-                                </td>
+                                <td>Vendor Name</td>
+                                <td>: </td>
+                                <td><t t-esc="o.partner_id.name"/></td>
+                                <td>No SPK</td>
+                                <td>: </td>
+                                <td><t t-esc="o.spk_id"/></td>
                             </tr>
                             <tr>
-                                <td>
-                                    <strong>Project ID:
-                                        <t t-esc="o.project_id.name"/>
-                                    </strong>
-                                </td>
-                                <td>
-                                    <strong>SPK Date:
-                                        <t t-esc="o.date"/>
-                                    </strong>
-                                </td>
+                                <td>Project ID</td>
+                                <td>: </td>
+                                <td><t t-esc="o.project_id.name"/></td>
+                                <td>SPK Date</td>
+                                <td>: </td>
+                                <td><t t-esc="o.date"/></td>
                             </tr>
                             <tr>
-                                <td>
-                                    <strong>Site Name:
-                                        <t t-esc="o.site_name"/>
-                                    </strong>
-                                </td>
-                                <td>
-                                    <strong>Total SPK:
-                                        <t t-esc="o.spk_total"/>
-                                    </strong>
-                                </td>
+                                <td>Site Name</td>
+                                <td>: </td>
+                                <td><t t-esc="o.site_name"/></td>
+                                <td>Total SPK</td>
+                                <td>: </td>
+                                <td><t t-esc="o.spk_total"/></td>
                             </tr>
                             <tr>
-                                <td>
-                                    <strong>Area:
-                                        <t t-esc="o.area"/>
-                                    </strong>
-                                </td>
+                                <td>Area</td>
+                                <td>: </td>
+                                <td><t t-esc="dict(object._fields['area'].selection).get(object.area)"/></td>
                             </tr>
                             <tr>
-                                <td>
-                                    <strong>Project Type:
-                                        <t t-esc="o.project_type_id.name"/>
-                                    </strong>
-                                </td>
+                                <td>Project Type</td>
+                                <td>: </td>
+                                <td><t t-esc="o.project_type_id.name"/></td>
                             </tr>
-                        </div>
+                        </table>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Product Code</th>
                                     <th>Description</th>
                                     <th>Unit</th>
-                                    <th>Qty (Contract)</th>
-                                    <th>Unit Price (Contract)</th>
-                                    <th>Total (Contract)</th>
+                                    <th>Qty<br/>(Contract)</th>
+                                    <th>Unit Price<br/>(Contract)</th>
+                                    <th>Total<br/>(Contract)</th>
                                     <th>Qty In</th>
                                     <th>Qty Out</th>
-                                    <th>Qty (Implementation)</th>
-                                    <th>Qty (Proposed)</th>
-                                    <th>Qty (Deal Final)</th>
-                                    <th>Total (Deal Final)</th>
+                                    <th>Qty<br/>(Implementation)</th>
+                                    <th>Qty<br/>(Proposed)</th>
+                                    <th>Qty<br/>(Deal Final)</th>
+                                    <th>Total<br/>(Deal Final)</th>
+                                    <th>Qty<br/>(Contract vs Final)</th>
+                                    <th>Total<br/>(Contract vs Final)</th>
                                 </tr>
                             </thead>
                             <!--<tbody>
+                                <tr>
+
+                                </tr>
                                 <t t-foreach="o.standard" t-as="line">
                                     <tr>
                                         <td>

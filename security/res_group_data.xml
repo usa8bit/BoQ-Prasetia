@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!-- Workflow -->
     <record id="group_draft_user" model="res.groups">
         <field name="name">Set Draft User</field>
         <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
@@ -10,8 +11,8 @@
         <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
     </record>
 
-    <record id="group_logistic_user" model="res.groups">
-        <field name="name">Logistic User</field>
+    <record id="group_level_1_user" model="res.groups">
+        <field name="name">Level 1 User</field>
         <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
     </record>
 
@@ -20,23 +21,65 @@
         <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
     </record>
 
-    <record id="group_vendor_user" model="res.groups">
-        <field name="name">Vendor User</field>
+    <record id="group_level_2_user" model="res.groups">
+        <field name="name">Level 2 User</field>
         <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
     </record>
 
-    <record id="group_lead_user" model="res.groups">
-        <field name="name">Lead User</field>
+    <record id="group_level_3_user" model="res.groups">
+        <field name="name">Level 3 User</field>
         <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
     </record>
 
+    <record id="group_level_4_user" model="res.groups">
+        <field name="name">Level 4 User</field>
+        <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
+    </record>
+
+    <record id="group_level_5_user" model="res.groups">
+        <field name="name">Level 5 User</field>
+        <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
+    </record>
+
+    <record id="group_level_6_user" model="res.groups">
+        <field name="name">Level 6 User</field>
+        <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
+    </record>
+
+    <record id="group_level_7_user" model="res.groups">
+        <field name="name">Level 7 User</field>
+        <field name="category_id" ref="bill_of_quantity_workflow_module_category"/>
+    </record>
+
+    <!-- Data -->
     <record id="group_view_own_data" model="res.groups">
-        <field name="name">View Own Data</field>
+        <field name="name">View Own Data (Vendor)</field>
         <field name="category_id" ref="bill_of_quantity_data_module_category"/>
     </record>
 
     <record id="group_view_all_data" model="res.groups">
         <field name="name">View All Data</field>
         <field name="category_id" ref="bill_of_quantity_data_module_category"/>
+    </record>
+
+    <!-- Role -->
+    <record id="group_engineering" model="res.groups">
+        <field name="name">Engineering</field>
+        <field name="category_id" ref="bill_of_quantity_role_module_category"/>
+    </record>
+
+    <record id="group_procurement" model="res.groups">
+        <field name="name">Procurement</field>
+        <field name="category_id" ref="bill_of_quantity_role_module_category"/>
+    </record>
+
+    <record id="group_logistic" model="res.groups">
+        <field name="name">Logistic</field>
+        <field name="category_id" ref="bill_of_quantity_role_module_category"/>
+    </record>
+
+    <record id="group_mitra" model="res.groups">
+        <field name="name">Mitra</field>
+        <field name="category_id" ref="bill_of_quantity_role_module_category"/>
     </record>
 </odoo>

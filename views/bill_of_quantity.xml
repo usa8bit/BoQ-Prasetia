@@ -36,11 +36,15 @@
                 <header>
                     <button id="button_draft" name="action_draft" string="Set to Draft" type="object" states="cancel" groups="bill_of_quantity_prasetia.group_draft_user"/>
                     <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary" type="object" states="draft" groups="bill_of_quantity_prasetia.group_confirm_user"/>
-                    <button id="button_logistic" name="action_logistic" string="Approve" class="btn-primary" type="object" states="confirm" groups="bill_of_quantity_prasetia.group_logistic_user"/>
-                    <button id="button_cancel" name="action_cancel" string="Cancel" type="object" states="draft,confirm" groups="bill_of_quantity_prasetia.group_cancel_user"/>
-                    <button id="button_vendor" name="action_vendor" string="Approve" class="btn-primary" type="object" states="logistic" groups="bill_of_quantity_prasetia.group_vendor_user"/>
-                    <button id="button_lead" name="action_lead" string="Approve" class="btn-primary" type="object" states="vendor" groups="bill_of_quantity_prasetia.group_lead_user"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft, confirm, logistic, vendor"/>
+                    <button id="button_level_1" name="action_level_1" string="Approve" class="btn-primary" type="object" states="confirm" groups="bill_of_quantity_prasetia.group_level_1_user"/>
+                    <button id="button_level_2" name="action_level_2" string="Approve" class="btn-primary" type="object" states="level 1" groups="bill_of_quantity_prasetia.group_level_2_user"/>
+                    <button id="button_level_3" name="action_level_3" string="Approve" class="btn-primary" type="object" states="level 2" groups="bill_of_quantity_prasetia.group_level_3_user"/>
+                    <button id="button_level_4" name="action_level_4" string="Approve" class="btn-primary" type="object" states="level 3" groups="bill_of_quantity_prasetia.group_level_4_user"/>
+                    <button id="button_level_5" name="action_level_5" string="Approve" class="btn-primary" type="object" states="level 4" groups="bill_of_quantity_prasetia.group_level_5_user"/>
+                    <button id="button_level_6" name="action_level_6" string="Approve" class="btn-primary" type="object" states="level 5" groups="bill_of_quantity_prasetia.group_level_6_user"/>
+                    <button id="button_level_7" name="action_level_7" string="Approve" class="btn-primary" type="object" states="level 6" groups="bill_of_quantity_prasetia.group_level_7_user"/>
+                    <button id="button_cancel" name="action_cancel" string="Cancel" type="object" states="draft,confirm,level 1,level 2,level 3,level 4,level 5,level 6,level 7" groups="bill_of_quantity_prasetia.group_cancel_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft, confirm, Level 1, level 2"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -51,15 +55,17 @@
                     <group>
                         <group>
                             <field name="partner_id" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
-                            <field name="project_id" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
+                            <field name="project_id" attrs="{'readonly': ['|', ('state','not in', ['draft']), ('is_engineering_group', '=', False)]}"/>
                             <field name="site_name"/>
                             <field name="area"/>
-                            <field name="project_type_id" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
+                            <field name="project_type_id" attrs="{'readonly': ['|', ('state','not in', ['draft']), ('is_engineering_group', '=', False)]}"/>
                         </group>
                         <group>
-                            <field name="spk_id" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
-                            <field name="date" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
-                            <field name="spk_total" widget="monetary" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
+                            <field name="spk_id" attrs="{'readonly': ['|', ('state','not in', ['confirm']), ('is_procurement_group', '=', False)]}"/>
+                            <field name="date" attrs="{'readonly': ['|', ('state','not in', ['confirm']), ('is_procurement_group', '=', False)]}"/>
+                            <field name="spk_total" widget="monetary"/>
+                            <field name="is_engineering_group" invisible="1"/>
+                            <field name="is_procurement_group" invisible="1"/>
                         </group>
                     </group>
                     <notebook>
@@ -68,50 +74,56 @@
                             <field name="standard_ids">
                                 <tree editable="bottom">
                                     <field name="product_id" width="200px" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
-                                    <field name="description" width="200px"/>
+                                    <!--<field name="description" width="200px"/>-->
                                     <field name="unit" width="100px"/>
-                                    <field name="qty_contract" width="150px" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
-                                    <field name="unit_price" width="200px" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
+                                    <field name="qty_contract" width="150px" attrs="{'readonly': ['|', ('state','not in', ['draft']), ('is_engineering_group', '=', False)]}"/>
+                                    <field name="unit_price" width="200px" attrs="{'readonly': ['|', ('state','not in', ['confirm','level 6']), ('is_procurement_group', '=', False)]}"/>
                                     <field name="total_price_contract" width="200px"/>
-                                    <field name="qty_in" width="100px" attrs="{'readonly': [('state','not in', ['confirm'])]}"/>
-                                    <field name="qty_out" width="100px" attrs="{'readonly': [('state','not in', ['confirm'])]}"/>
-                                    <field name="qty_implementation" width="200px" attrs="{'readonly': [('state','not in', ['logistic'])]}"/>
+                                    <field name="qty_in" width="100px" attrs="{'readonly': ['|', ('state','not in', ['level 2']), ('is_logistic_group', '=', False)]}"/>
+                                    <field name="qty_out" width="100px" attrs="{'readonly': ['|', ('state','not in', ['level 2']), ('is_logistic_group', '=', False)]}"/>
+                                    <field name="qty_implementation" width="200px" attrs="{'readonly': ['|', ('state','not in', ['level 1']), ('is_mitra_group', '=', False)]}"/>
                                     <field name="qty_proposed" width="150px"/>
                                     <field name="qty_deal" width="150px"/>
                                     <field name="total_price_deal" width="200px"/>
                                     <field name="qty_diff" width="200px"/>
                                     <field name="total_price_diff" width="300px"/>
                                     <field name="state" invisible="1"/>
+                                    <field name="is_engineering_group" invisible="1"/>
+                                    <field name="is_procurement_group" invisible="1"/>
+                                    <field name="is_logistic_group" invisible="1"/>
+                                    <field name="is_mitra_group" invisible="1"/>
                                 </tree>
                             </field>
                             <separator string="Non Standard"/>
                             <field name="non_standard_ids">
-                                <tree editable="bottom" delete="false">
-                                    <field name="product_id" width="200px" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
-                                    <field name="description" width="200px"/>
+                                <tree editable="bottom">
+                                    <field name="product_id" width="200px" attrs="{'readonly': [('state','not in', ['level 1'])]}"/>
+                                    <!--<field name="description" width="200px"/>-->
                                     <field name="unit" width="100px"/>
-                                    <field name="qty_contract" width="150px" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
-                                    <field name="unit_price" width="200px" attrs="{'readonly': [('state','not in', ['draft'])]}"/>
+                                    <field name="qty_contract" width="150px"/>
+                                    <field name="unit_price" width="200px" attrs="{'readonly': ['|', ('state','not in', ['level 6']), ('is_procurement_group', '=', False)]}"/>
                                     <field name="total_price_contract" width="200px"/>
-                                    <field name="qty_in" width="100px" attrs="{'readonly': [('state','not in', ['confirm'])]}"/>
-                                    <field name="qty_out" width="100px" attrs="{'readonly': [('state','not in', ['confirm'])]}"/>
-                                    <field name="qty_implementation" width="200px" attrs="{'readonly': [('state','not in', ['logistic'])]}"/>
+                                    <field name="qty_in" width="100px" attrs="{'readonly': ['|', ('state','not in', ['level 2']), ('is_logistic_group', '=', False)]}"/>
+                                    <field name="qty_out" width="100px" attrs="{'readonly': ['|', ('state','not in', ['level 2']), ('is_logistic_group', '=', False)]}"/>
+                                    <field name="qty_implementation" width="200px" attrs="{'readonly': ['|', ('state','not in', ['level 1']), ('is_mitra_group', '=', False)]}"/>
                                     <field name="qty_proposed" width="150px"/>
                                     <field name="qty_deal" width="150px"/>
                                     <field name="total_price_deal" width="200px"/>
                                     <field name="qty_diff" width="200px"/>
                                     <field name="total_price_diff" width="300px"/>
                                     <field name="state" invisible="1"/>
+                                    <field name="is_procurement_group" invisible="1"/>
+                                    <field name="is_logistic_group" invisible="1"/>
+                                    <field name="is_mitra_group" invisible="1"/>
                                 </tree>
                             </field>
                         </page>
                     </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
-                </div>
-
             </form>
         </field>
     </record>
