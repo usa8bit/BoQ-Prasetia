@@ -43,6 +43,7 @@
                     <button id="button_level_5" name="action_level_5" string="Approve" class="btn-primary" type="object" states="level 4" groups="bill_of_quantity_prasetia.group_level_5_user"/>
                     <button id="button_level_6" name="action_level_6" string="Approve" class="btn-primary" type="object" states="level 5" groups="bill_of_quantity_prasetia.group_level_6_user"/>
                     <button id="button_level_7" name="action_level_7" string="Approve" class="btn-primary" type="object" states="level 6" groups="bill_of_quantity_prasetia.group_level_7_user"/>
+                    <button id="button_level_8" name="action_level_8" string="Approve" class="btn-primary" type="object" states="level 7" groups="bill_of_quantity_prasetia.group_level_8_user"/>
                     <button id="button_cancel" name="action_cancel" string="Cancel" type="object" states="draft,confirm,level 1,level 2,level 3,level 4,level 5,level 6,level 7" groups="bill_of_quantity_prasetia.group_cancel_user"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft, confirm, Level 1, level 2"/>
                 </header>
@@ -63,6 +64,7 @@
                         <group>
                             <field name="spk_id" attrs="{'readonly': ['|', ('state','not in', ['confirm']), ('is_procurement_group', '=', False)]}"/>
                             <field name="date" attrs="{'readonly': ['|', ('state','not in', ['confirm']), ('is_procurement_group', '=', False)]}"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="spk_total" widget="monetary"/>
                             <field name="is_engineering_group" invisible="1"/>
                             <field name="is_procurement_group" invisible="1"/>
@@ -87,6 +89,7 @@
                                     <field name="total_price_deal" width="200px"/>
                                     <field name="qty_diff" width="200px"/>
                                     <field name="total_price_diff" width="300px"/>
+                                    <field name="currency_id" invisible="1"/>
                                     <field name="state" invisible="1"/>
                                     <field name="is_engineering_group" invisible="1"/>
                                     <field name="is_procurement_group" invisible="1"/>
@@ -111,6 +114,7 @@
                                     <field name="total_price_deal" width="200px"/>
                                     <field name="qty_diff" width="200px"/>
                                     <field name="total_price_diff" width="300px"/>
+                                    <field name="currency_id" invisible="1"/>
                                     <field name="state" invisible="1"/>
                                     <field name="is_procurement_group" invisible="1"/>
                                     <field name="is_logistic_group" invisible="1"/>
@@ -119,6 +123,18 @@
                             </field>
                         </page>
                     </notebook>
+                    <group>
+                        <group>
+                            <field name="total_deal_s" widget="monetary"/>
+                            <field name="total_deal_ns" widget="monetary"/>
+                            <field name="total_deal" widget="monetary"/>
+                        </group>
+                        <group>
+                            <field name="total_diff_s" widget="monetary"/>
+                            <field name="total_diff_ns" widget="monetary"/>
+                            <field name="total_diff" widget="monetary"/>
+                        </group>
+                    </group>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
                         <field name="message_ids" widget="mail_thread"/>

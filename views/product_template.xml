@@ -17,5 +17,6 @@
               name="Products"
               parent="menu_bill_of_quantity_root"
               action="sale.product_template_action"
+              groups="group_view_all_data"
               sequence="40"/>
 </odoo>

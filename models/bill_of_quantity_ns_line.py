@@ -38,8 +38,8 @@ class BillOfQuantityNSLine(models.Model):
         ('level 3', 'Waiting Kord. Waspang'),
         ('level 4', 'Waiting PM'),
         ('level 5', 'Waiting LPM'),
-        ('level 6', 'Waiting Procurement'),
-        ('level 7', 'Approved')],
+        ('level 7', 'Waiting GM'),
+        ('level 8', 'Approved')],
         string='Status',
         related='boq_id.state',
     )
@@ -77,7 +77,7 @@ class BillOfQuantityNSLine(models.Model):
     @api.depends('state', 'qty_implementation', 'unit_price', 'qty_contract', 'total_price_contract')
     def _compute_values(self):
         for line in self:
-            if line.state == 'level 7':
+            if line.state >= 'level 7':
                 line.qty_proposed = line.qty_implementation
                 line.qty_deal = line.qty_implementation
                 line.total_price_deal = line.qty_deal * line.unit_price
