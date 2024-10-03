@@ -2,52 +2,105 @@
     <template id="report_boq_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <style>
-                    .tg {border-collapse:collapse;border-spacing:0;}
-                    .tg td {border-color:black;border-style:solid;border-width:1px;font-family:Arial,
-                    sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
-                    .table {border-color:black;border-style:solid;border-width:1px;font-family:Arial,
-                    sans-serif;font-size:11px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;
-                    text-align:center;vertical-align:center;}
-                </style>
                 <t t-call="web.basic_layout">
+                    <div class="page" style="font-size:14px;font-family:Times New Roman;">
+                        <div class="row">
+                            <div class="col-5" style="margin: 10px 5px;">
+                                <table>
+                                    <tr>
+                                        <td>Vendor Name</td>
+                                        <td style="padding: 0px 5px 0px 0px">: </td>
+                                        <td><t t-esc="o.partner_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project ID</td>
+                                        <td>: </td>
+                                        <td><t t-esc="o.project_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Site Name</td>
+                                        <td>: </td>
+                                        <td><t t-esc="o.site_name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Area</td>
+                                        <td>: </td>
+                                        <td><t t-esc="o.area"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Type</td>
+                                        <td>: </td>
+                                        <td><t t-esc="o.project_type_id.name"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-5" style="margin: 10px 5px;">
+                                <table>
+                                    <tr>
+                                        <td>No SPK</td>
+                                        <td style="padding: 0px 5px 0px 0px">: </td>
+                                        <td><t t-esc="o.spk_id"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>SPK Date</td>
+                                        <td>: </td>
+                                        <td><t t-esc="o.date"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total SPK</td>
+                                        <td>: </td>
+                                        <td><t t-esc="o.spk_total"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col" style="padding: 0px 0px 0px 5px;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img t-attf-src="data:image/*;base64,{{user.company_id.logo}}" style="width:200px;height:100px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <div class="page">
-                        <table class="header">
-                            <tr>
-                                <td>Vendor Name</td>
-                                <td>: </td>
-                                <td><t t-esc="o.partner_id.name"/></td>
-                                <td>No SPK</td>
-                                <td>: </td>
-                                <td><t t-esc="o.spk_id"/></td>
-                            </tr>
-                            <tr>
-                                <td>Project ID</td>
-                                <td>: </td>
-                                <td><t t-esc="o.project_id.name"/></td>
-                                <td>SPK Date</td>
-                                <td>: </td>
-                                <td><t t-esc="o.date"/></td>
-                            </tr>
-                            <tr>
-                                <td>Site Name</td>
-                                <td>: </td>
-                                <td><t t-esc="o.site_name"/></td>
-                                <td>Total SPK</td>
-                                <td>: </td>
-                                <td><t t-esc="o.spk_total"/></td>
-                            </tr>
-                            <tr>
-                                <td>Area</td>
-                                <td>: </td>
-                                <td><t t-esc="dict(object._fields['area'].selection).get(object.area)"/></td>
-                            </tr>
-                            <tr>
-                                <td>Project Type</td>
-                                <td>: </td>
-                                <td><t t-esc="o.project_type_id.name"/></td>
-                            </tr>
-                        </table>
+<!--                        <table class="header">-->
+<!--                            <tr>-->
+<!--                                <td>Vendor Name</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="o.partner_id.name"/></td>-->
+<!--                                <td>No SPK</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="o.spk_id"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Project ID</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="o.project_id.name"/></td>-->
+<!--                                <td>SPK Date</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="o.date"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Site Name</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="o.site_name"/></td>-->
+<!--                                <td>Total SPK</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="o.spk_total"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Area</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="dict(object._fields['area'].selection).get(object.area)"/></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>Project Type</td>-->
+<!--                                <td>: </td>-->
+<!--                                <td><t t-esc="o.project_type_id.name"/></td>-->
+<!--                            </tr>-->
+<!--                        </table>-->
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
